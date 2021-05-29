@@ -5,23 +5,6 @@ var upperCase = lowerCase.toUpperCase();
 var numeric = "0123456789";
 var symbol = '+-:;?_~!@#$%^&*`|"(){}[]=<> /,.';
 
-var characterInput = document.querySelector("#generate")
-var lowerInput = document.querySelector("#generate")
-var upperInput = document.querySelector("#generate")
-var numberInput = document.querySelector("#generate")
-var symbolInput =   document.querySelector("#generate")
-
-characterInput.addEventListener("click", 
-function(){prompt("How long would do you want your passcode", "12")});
-// while (characterInput < 8 || characterInput > 128 || isNaN(characterInput) || characterInput == null) {
-//   alert("Enter a value between 8 and 128")
-//   prompt("How long would do you want your passcode", "12")}})
-
-lowerInput.addEventListener("click", function(){confirm('Do you want lower case letters in your password?\nOK for "Yes"\nCancel for "No"')})
-upperInput.addEventListener("click", function(){confirm('Do you want upper case letters in your password?\nOK for "Yes"\nCancel for "No"')})
-numberInput.addEventListener("click", function(){confirm('Do you want numbers in your password?\nOK for "Yes"\nCancel for "No"')})
-symbolInput.addEventListener("click", function(){confirm('Do you want special characters in your password?\nOK for "Yes"\nCancel for "No"')})
-
 var charAmount = characterInput;
 var includeLower = lowerInput;
 var includeUpper = upperInput;
@@ -50,24 +33,36 @@ function generatePassword() {
   for (let i = 0; i < charAmount; i++) {
     result += passCriteria[Math.floor(Math.random() * passCriteria.length)];
   }
-  // return result
-  document.getElementById('password').innerHTML = result
+  return document.getElementById('password').innerHTML = result
 }
-// console.log(generatePassword())
+console.log(generatePassword())
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword)
+
+var characterInput = "";
+var lowerInput = "";
+var upperInput = "";
+var numberInput = "";
+var symbolInput = "";
+generateBtn.addEventListener("click", function() {
+  characterInput = prompt("How long would do you want your passcode", "12");
+  lowerInput = confirm('Do you want lower case letters in your password?\nOK for "Yes"\nCancel for "No"');
+  upperInput = confirm('Do you want upper case letters in your password?\nOK for "Yes"\nCancel for "No"');
+  numberInput = confirm('Do you want numbers in your password?\nOK for "Yes"\nCancel for "No"');
+  symbolInput = confirm('Do you want special characters in your password?\nOK for "Yes"\nCancel for "No"');
+  console.log(characterInput, lowerInput, upperInput, numberInput, symbolInput)
+})
 
 
 // function writePassword() {
-//   var characterInput = prompt("How long would do you want your passcode", "12");
-//   while (characterInput < 8 || characterInput > 128 || isNaN(characterInput) || characterInput == null) {
-//     alert("Enter a value between 8 and 128")
-//     var characterInput = prompt("How long would do you want your passcode", "12")};
+  //   while (characterInput < 8 || characterInput > 128 || isNaN(characterInput) || characterInput == null) {
+    //     alert("Enter a value between 8 and 128")
+    //     var characterInput = prompt("How long would do you want your passcode", "12")};
+  //   var characterInput = prompt("How long would do you want your passcode", "12");
   // var lowerInput = confirm('Do you want lower case letters in your password?\nOK for "Yes"\nCancel for "No"');
-//   var upperInput = confirm('Do you want upper case letters in your password?\nOK for "Yes"\nCancel for "No"');
-//   var numberInput = confirm('Do you want numbers in your password?\nOK for "Yes"\nCancel for "No"');
-//   var symbolInput = confirm('Do you want special characters in your password?\nOK for "Yes"\nCancel for "No"');
+  // var upperInput = confirm('Do you want upper case letters in your password?\nOK for "Yes"\nCancel for "No"');
+  // var numberInput = confirm('Do you want numbers in your password?\nOK for "Yes"\nCancel for "No"');
+  // var symbolInput = confirm('Do you want special characters in your password?\nOK for "Yes"\nCancel for "No"');
 //   alert("Thank you");
 //     return (characterInput, lowerInput, upperInput, numberInput, symbolInput)
 //   }
