@@ -5,11 +5,26 @@ var upperCase = lowerCase.toUpperCase();
 var numeric = "0123456789";
 var symbol = '+-:;?_~!@#$%^&*`|"(){}[]=<> /,.';
 
-var charAmount = characterInput;
-var includeLower = lowerInput;
-var includeUpper = upperInput;
-var includeNumeric = numberInput;
-var includeSymbol = symbolInput;
+var characterInput = "";
+var lowerInput = "";
+var upperInput = "";
+var numberInput = "";
+var symbolInput = "";
+
+generateBtn.addEventListener("click", function() {
+  characterInput = prompt("How long would do you want your passcode", "12");
+  lowerInput = confirm('Do you want lower case letters in your password?\nOK for "Yes"\nCancel for "No"');
+  upperInput = confirm('Do you want upper case letters in your password?\nOK for "Yes"\nCancel for "No"');
+  numberInput = confirm('Do you want numbers in your password?\nOK for "Yes"\nCancel for "No"');
+  symbolInput = confirm('Do you want special characters in your password?\nOK for "Yes"\nCancel for "No"');
+  console.log(characterInput, lowerInput, upperInput, numberInput, symbolInput)
+})
+
+var charAmount = (characterInput);
+var includeLower = (lowerInput);
+var includeUpper = (upperInput);
+var includeNumeric = (numberInput);
+var includeSymbol = (symbolInput);
 
 //Adding character criteria to a string
 var passCriteria = lowerCase;
@@ -33,25 +48,12 @@ function generatePassword() {
   for (let i = 0; i < charAmount; i++) {
     result += passCriteria[Math.floor(Math.random() * passCriteria.length)];
   }
-  return document.getElementById('password').innerHTML = result
+  return result
 }
 console.log(generatePassword())
 
 // Add event listener to generate button
 
-var characterInput = "";
-var lowerInput = "";
-var upperInput = "";
-var numberInput = "";
-var symbolInput = "";
-generateBtn.addEventListener("click", function() {
-  characterInput = prompt("How long would do you want your passcode", "12");
-  lowerInput = confirm('Do you want lower case letters in your password?\nOK for "Yes"\nCancel for "No"');
-  upperInput = confirm('Do you want upper case letters in your password?\nOK for "Yes"\nCancel for "No"');
-  numberInput = confirm('Do you want numbers in your password?\nOK for "Yes"\nCancel for "No"');
-  symbolInput = confirm('Do you want special characters in your password?\nOK for "Yes"\nCancel for "No"');
-  console.log(characterInput, lowerInput, upperInput, numberInput, symbolInput)
-})
 
 
 // function writePassword() {
