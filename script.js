@@ -12,8 +12,10 @@ var numberInput = "";
 var symbolInput = "";
 var passCriteria = "";
 
+// Add event listener to generate button
 generateBtn.addEventListener("click", function () {
   characterInput = prompt("How long would do you want your passcode", "12");
+  // Loops character length question if not meet parameters of number 8-128.
   while (
     characterInput < 8 ||
     characterInput > 128 ||
@@ -36,7 +38,6 @@ generateBtn.addEventListener("click", function () {
     'Do you want special characters in your password?\nOK for "Yes"\nCancel for "No"'
   );
   console.log(characterInput, lowerInput, upperInput, numberInput, symbolInput);
-  // console.log(characterInput)
   alert("Thank you");
 
   //Adding character criteria to a string
@@ -62,23 +63,6 @@ function generatePassword() {
   for (let i = 0; i < characterInput; i++) {
     result += passCriteria[Math.floor(Math.random() * passCriteria.length)];
   }
+  // Sends new password to page
   return (document.getElementById("password").innerHTML = result);
 }
-
-// Add event listener to generate button
-
-// function writePassword() {
-// while (characterInput < 8 || characterInput > 128 || isNaN(characterInput) || characterInput == null) {
-//     alert("Enter a value between 8 and 128")
-//     var characterInput = prompt("How long would do you want your passcode", "12")};
-// var characterInput = prompt("How long would do you want your passcode", "12");
-// var lowerInput = confirm('Do you want lower case letters in your password?\nOK for "Yes"\nCancel for "No"');
-// var upperInput = confirm('Do you want upper case letters in your password?\nOK for "Yes"\nCancel for "No"');
-// var numberInput = confirm('Do you want numbers in your password?\nOK for "Yes"\nCancel for "No"');
-// var symbolInput = confirm('Do you want special characters in your password?\nOK for "Yes"\nCancel for "No"');
-//   alert("Thank you");
-//     return (characterInput, lowerInput, upperInput, numberInput, symbolInput)
-//   }
-// console.log(characterInput)
-
-//Criteria from the prompt boxes
