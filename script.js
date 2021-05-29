@@ -2,15 +2,22 @@
 var generateBtn = document.querySelector("#generate");
 var lowerCase = "abcdefghijklmnopqrstuvwxyz";
 var upperCase = lowerCase.toUpperCase();
-var numeric = "0123456789"
-var symbol = '+-:;?_~!@#$%^&*`|"(){}[]=<> /\,.'
+var numeric = "0123456789";
+var symbol = '+-:;?_~!@#$%^&*`|"(){}[]=<> /,.';
 
-// Values determined from generate password prompts
-var charAmount = 14
-var includeLower = true
-var includeUpper = true
-var includeNumeric = true
-var includeSymbol = true 
+//Criteria from the prompt boxes
+var charAmount = 20;
+var includeLower = true;
+var includeUpper = true;
+var includeNumeric = true;
+var includeSymbol = true;              
+
+//Adding character criteria to a string
+var passCriteria = lowerCase;
+  // if (includeLower = true) {return lowerCase},
+  if (includeUpper) passCriteria = passCriteria + upperCase;
+  if (includeNumeric) passCriteria = passCriteria + numeric;
+  if (includeSymbol) passCriteria = passCriteria + symbol; 
 
 
 // Write password to the #password input
@@ -22,32 +29,34 @@ function writePassword() {
 
 }
 
-// Potential code to generate password
-function generatePassword (charAmount, includeLower, includeUpper, includeNumeric, includeSymbol) {
-  var requireChar = lowerCase
-  if (includeUpper) requireChar = requireChar + upperCase
-  if (includeNumeric) requireChar = requireChar + numeric
-  if (includeSymbol) requireChar = requireChar + symbol
-
-  var passwordLength = []
-  for (let i = 0; i < charAmount; i++) {
-      var characterCode = requireChar[Math.floor(Math.random() * requireChar.length)]
-      // passwordLength.push(String.fromrequireChar(characterCode))
-  }
-  return
+function generatePassword() {
+  var result = ""
+for (let i = 0; i < charAmount; i++) {
+  result += passCriteria[Math.floor(Math.random() * passCriteria.length)];
 }
-
-console.log(generatePassword())
+return result
+}
 
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword)
 
-// Prompt box to enter password length
-// Still need work
-function charAmountNumber() {
-  var length = prompt("How long do you want your password?\nEnter a number 8-128.", "12");
-  if (length != null) 
+function writePassword() {
+  var characterInput = prompt("How long would do you want your passcode", "12");
+  while(characterInput < 8) {
+    alert("Enter a value between 8 and 128")
+    var characterInput = prompt("How long would do you want your passcode", "12");
   }
+  while(characterInput > 128) {
+    alert("Enter a value between 8 and 128")
+    var characterInput = prompt("How long would do you want your passcode", "12");
+  }
+  confirm('Do you want lower case letters in your password?\nOK for "Yes"\nCancel for "No"');
+  confirm('Do you want upper case letters in your password?\nOK for "Yes"\nCancel for "No"');
+  confirm('Do you want numbers in your password?\nOK for "Yes"\nCancel for "No"');
+  confirm('Do you want special characters in your password?\nOK for "Yes"\nCancel for "No"');
+  alert("Thank you");
+}
+
 
 // Confirm box to enter password criteria
